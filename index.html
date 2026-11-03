@@ -140,7 +140,30 @@ h1, h2, h3 { margin: 0; line-height: 1.02; }
 .look-a .deals-strip { background: var(--sp); color: var(--spt); transform: rotate(-1.2deg); margin: 0 -20px; }
 .look-a .deal:nth-child(2) { transform: rotate(0.8deg); }
 .look-a .deal .sticker { background: var(--st); color: var(--stt); }
-.look-a .deal .price, .look-a .deal .go, .look-a .game .go { color: var(--ac); }
+.look-a .deal .price, .look-a .game .go { color: var(--ac); }
+/* Deal buttons: real buttons that lift and nudge their arrow, each in its deal's colour */
+.look-a .deal p:last-of-type { margin-bottom: 26px; }
+.look-a .deal .go { position: relative; overflow: hidden; align-self: flex-start; display: inline-flex; align-items: center; gap: 9px; height: 52px; padding: 0 22px; border-radius: 14px; background: var(--ac); color: #FFF9EC; font: 800 16px/1 "Nunito", sans-serif; box-shadow: 0 5px 0 #B24333; transition: transform 0.15s, box-shadow 0.15s, filter 0.15s; }
+.look-a .deal .go i { font-style: normal; transition: transform 0.2s; }
+.look-a .deal:hover .go { transform: translateY(-2px); box-shadow: 0 7px 0 #B24333; filter: brightness(1.08); }
+.look-a .deal:hover .go i { transform: translateX(5px); }
+.look-a .deal.dc .go { background: var(--discord); box-shadow: 0 5px 0 #4149C4; }
+.look-a .deal.dc:hover .go { box-shadow: 0 7px 0 #4149C4; }
+/* The launch sale: the loud one, in brick red with gold */
+.look-a .deal.hot { background: repeating-conic-gradient(from 0deg at 100% 0%, rgba(255,249,236,0.07) 0 6deg, transparent 6deg 12deg), linear-gradient(160deg, #D85F49, #B54333); color: #FFF9EC; box-shadow: 0 0 0 3px #F2C14E, 8px 10px 0 rgba(31,42,68,0.22); transform: rotate(-1deg) scale(1.03); z-index: 1; }
+.look-a .deal.hot:hover { transform: rotate(-1.5deg) scale(1.05); }
+.look-a .deal.hot h3 { font-size: 34px; }
+.look-a .deal.hot .price { color: #F7C948; font-size: 64px; text-shadow: 0 4px 0 rgba(90,20,10,0.25); }
+.look-a .deal.hot .price s { color: #FFF9EC; opacity: 0.65; }
+.look-a .deal.hot p { color: rgba(255,249,236,0.92); }
+.look-a .deal.hot .ends { display: inline-flex; align-self: flex-start; margin-top: 14px; padding: 6px 12px; border-radius: 8px; background: rgba(31,42,68,0.35); color: #FFF9EC; font: 700 15px/1.2 "Fredoka", sans-serif; }
+.look-a .deal.hot .sticker { top: -24px; right: -10px; display: grid; place-items: center; width: 76px; height: 76px; padding: 0; border-radius: 50%; background: #F7C948; color: #1F2A44; font-size: 21px; box-shadow: 0 0 0 4px #FFF9EC, 0 8px 16px rgba(0,0,0,0.2); animation: wobble 2.6s ease-in-out infinite; }
+.look-a .deal.hot .go { background: #F7C948; color: #1F2A44; box-shadow: 0 5px 0 #C9962E; }
+.look-a .deal.hot:hover .go { box-shadow: 0 7px 0 #C9962E; }
+.look-a .deal.hot .go::after { content: ""; position: absolute; top: 0; bottom: 0; left: -60%; width: 40%; background: linear-gradient(100deg, transparent, rgba(255,255,255,0.7), transparent); transform: skewX(-20deg); animation: shine 3.2s ease-in-out infinite; }
+@media (max-width: 640px) { .look-a .deal.hot { transform: rotate(-1deg); } .look-a .deal.hot .sticker { right: 6px; } .look-a .deal.hot .price { font-size: 54px; } }
+@keyframes wobble { 0%, 100% { transform: rotate(8deg) scale(1); } 50% { transform: rotate(-4deg) scale(1.1); } }
+@media (prefers-reduced-motion: reduce) { .look-a .deal.hot .sticker, .look-a .deal.hot .go::after { animation: none; } }
 .look-a .tag, .look-a .free { background: var(--cd); color: var(--ctx); }
 .look-a .tag.soon { background: var(--st); color: var(--stt); }
 .look-a .game.next .pic { background: repeating-linear-gradient(-45deg, rgba(43,36,49,0.06) 0 14px, transparent 14px 28px), var(--nx); }
@@ -205,26 +228,27 @@ h1, h2, h3 { margin: 0; line-height: 1.02; }
 <section class="wrap block" id="deals">
   <div class="head"><h2>Deals right now</h2><p>Grab them while they last.</p></div>
   <div class="deals">
-    <a class="deal card" data-launch href="https://offthecouch.cuzgames.com/play/?unlock&from=cuzgames">
+    <a class="deal card hot" data-launch href="https://offthecouch.cuzgames.com/play/?unlock&from=cuzgames">
       <span class="sticker">-50%</span>
       <h3>Launch sale</h3>
       <p class="price">$3.99<s>$7.99</s></p>
-      <p>Every Off the Couch game, plus every game we add later. One payment, no subscription. Until 15 November.</p>
-      <span class="go">Unlock in your browser →</span>
+      <p>Every Off the Couch game, plus every game we add later. One payment, no subscription.</p>
+      <p class="ends" data-left>Ends 15 November</p>
+      <span class="go">Unlock all games <i>→</i></span>
     </a>
-    <a class="deal card" href="https://discord.gg/fHxH9XVwNA">
+    <a class="deal card dc" href="https://discord.gg/fHxH9XVwNA">
       <span class="sticker">Free</span>
       <h3>Free copy on Discord</h3>
       <p class="price">$0</p>
       <p>Join our Discord, press “Get my free copy”, and you get your own code for the full game. While copies last.</p>
-      <span class="go">Join and get yours →</span>
+      <span class="go"><svg class="ico"><use href="#discord"/></svg>Get my free copy <i>→</i></span>
     </a>
-    <a class="deal card" href="https://offthecouch.cuzgames.com/play/?from=cuzgames">
+    <a class="deal card pl" href="https://offthecouch.cuzgames.com/play/?from=cuzgames">
       <span class="sticker">Always</span>
       <h3>Off the Couch</h3>
       <p class="price">Free</p>
       <p>Start playing right in your browser, with your body and your camera. No sign-in, no download.</p>
-      <span class="go">Play now →</span>
+      <span class="go"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4l13 8-13 8z" fill="currentColor"/></svg>Play free now <i>→</i></span>
     </a>
   </div>
 </section>
@@ -319,7 +343,9 @@ document.querySelectorAll('.mini').forEach(m => {
   m.addEventListener('mouseleave', () => v.pause());
 });
 // The launch sale ends by itself at the end of 15 November (same moment as the game site).
-if (Date.now() >= Date.parse('2026-11-16T08:00:00Z')) document.querySelectorAll('[data-launch]').forEach(e => e.remove());
+const ends = Date.parse('2026-11-16T08:00:00Z'), left = Math.ceil((ends - Date.now()) / 864e5);
+if (left <= 0) document.querySelectorAll('[data-launch]').forEach(e => e.remove());
+else document.querySelectorAll('[data-left]').forEach(e => e.textContent = left === 1 ? '⏰ Last day!' : `⏰ Only ${left} days left · ends 15 November`);
 </script>
 </body>
 </html>
