@@ -131,7 +131,7 @@ h1, h2, h3 { margin: 0; line-height: 1.02; }
 .foot span { margin-left: auto; opacity: 0.7; }
 
 /* The look: paper cards on a sky-blue page, coloured from the logo (cream paper, brick red, mustard, navy ink). */
-.look-a { --pg: #CFE4EC; --tx: #1F2A44; --tx2: #3E4A63; --cd: #FFF9EC; --ctx: #2B2431; --ctx2: #4A4150; --ac: #C94F3E; --hl: var(--ac); --btn: var(--ac); --btn-tx: #FFF9EC; --btn-sh: #B24333; --st: #D9A441; --stt: #2B2431; --sp: #1F2A44; --spt: #FFF9EC; --dk: #1F2A44; --sy: #D9A441; --syt: #2B2431; --nx: #E4EEF0; --line: rgba(31,42,68,0.2);
+.look-a { --pg: #CFE4EC; --tx: #1F2A44; --tx2: #3E4A63; --cd: #FFF9EC; --ctx: #2B2431; --ctx2: #4A4150; --ac: #C94F3E; --hl: var(--ac); --btn: var(--ac); --btn-tx: #FFF9EC; --btn-sh: #B24333; --st: #C94F3E; --stt: #FFF9EC; --sp: #1F2A44; --spt: #FFF9EC; --dk: #1F2A44; --sy: #C94F3E; --syt: #FFF9EC; --nx: #E4EEF0; --line: rgba(31,42,68,0.2);
   background: var(--pg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 .4 0 0 0 0 .3 0 0 0 0 .2 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E"); color: var(--tx); }
 .look-a h1, .look-a h2, .look-a h3 { font-family: "Fredoka", sans-serif; font-weight: 700; letter-spacing: -0.01em; }
 .look-a .hero h1 span { color: var(--hl); }
@@ -168,9 +168,9 @@ h1, h2, h3 { margin: 0; line-height: 1.02; }
 .look-a .deal.hot h3 { margin-left: 26px; }
 .look-a .deal.hot .price s { position: relative; margin-left: 12px; font-size: 26px; color: #FFF9EC; opacity: 0.75; text-decoration: none; text-shadow: none; }
 .look-a .deal.hot .price s::after { content: ""; position: absolute; left: -4px; right: -4px; top: 50%; height: 4px; border-radius: 2px; background: #1F2A44; transform: rotate(-12deg); }
-.look-a .deal.hot .sticker { top: -30px; right: -18px; width: 104px; height: 104px; display: grid; place-items: center; text-align: center; color: #1F2A44; font: 700 28px/0.9 "Fredoka", sans-serif; }
-.look-a .deal.hot .sticker small { display: block; font-size: 14px; letter-spacing: 0.08em; }
-.look-a .deal.hot .sticker::before { content: ""; position: absolute; inset: 0; z-index: -1; background: #FFD23F; clip-path: polygon(50% 0, 59% 13%, 75% 7%, 77% 23%, 93% 25%, 87% 41%, 100% 50%, 87% 59%, 93% 75%, 77% 77%, 75% 93%, 59% 87%, 50% 100%, 41% 87%, 25% 93%, 23% 77%, 7% 75%, 13% 59%, 0 50%, 13% 41%, 7% 25%, 23% 23%, 25% 7%, 41% 13%); animation: spin 14s linear infinite; filter: drop-shadow(0 4px 0 rgba(0,0,0,0.15)); }
+.look-a .deal.hot .sticker { top: -28px; right: -16px; width: 108px; height: 108px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; text-align: center; color: #C94F3E; font: 700 30px/1 "Fredoka", sans-serif; transform: rotate(10deg); }
+.look-a .deal.hot .sticker small { display: block; font-size: 13px; letter-spacing: 0.14em; color: #1F2A44; }
+.look-a .deal.hot .sticker::before { content: ""; position: absolute; inset: 0; z-index: -1; background: #FFF9EC; clip-path: polygon(50% 0, 59% 13%, 75% 7%, 77% 23%, 93% 25%, 87% 41%, 100% 50%, 87% 59%, 93% 75%, 77% 77%, 75% 93%, 59% 87%, 50% 100%, 41% 87%, 25% 93%, 23% 77%, 7% 75%, 13% 59%, 0 50%, 13% 41%, 7% 25%, 23% 23%, 25% 7%, 41% 13%); animation: spin 14s linear infinite; filter: drop-shadow(0 4px 0 rgba(90,20,10,0.3)); }
 .look-a .deal.hot .ends { display: inline-flex; align-self: flex-start; margin-top: 14px; padding: 7px 12px; border-radius: 8px; background: #1F2A44; color: #FFF9EC; font: 700 15px/1.2 "Fredoka", sans-serif; }
 .look-a .deal.hot .go { background: #FFF9EC; color: #B3402F; box-shadow: 0 5px 0 #7E2C20; }
 .look-a .deal.hot:hover .go { box-shadow: 0 7px 0 #7E2C20; }
@@ -213,7 +213,9 @@ h1, h2, h3 { margin: 0; line-height: 1.02; }
 .look-a .rooms li { background: rgba(255,249,236,0.08); }
 .look-a .studio .say { background: var(--sy); color: var(--syt); }
 .look-a .studio .say p, .look-a .studio .mail { color: var(--syt); }
-.look-a .studio .mail { text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 5px; }
+.look-a .studio .say { background: linear-gradient(155deg, #D9604A, #B3402F); }
+.look-a .studio .mail { display: inline-flex; align-items: center; gap: 10px; margin-top: 22px; padding: 14px 20px; border-radius: 14px; background: #FFF9EC; color: #B3402F; font-size: 19px; box-shadow: 0 5px 0 #7E2C20; transition: transform 0.15s; }
+.look-a .studio .mail:hover { transform: translateY(-2px); }
 .look-a .foot { border-top: 2px dashed var(--line); }
 
 @media (max-width: 960px) {
@@ -351,7 +353,7 @@ h1, h2, h3 { margin: 0; line-height: 1.02; }
     <div class="card say" id="contact">
       <h2>Say hello.</h2>
       <p>Questions, press, or a school that wants to play? Write to us.</p>
-      <a class="mail" href="mailto:support@cuzgames.com">support@cuzgames.com</a>
+      <a class="mail" href="mailto:support@cuzgames.com"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" d="M3 6h18v12H3zM3 7l9 6 9-6"/></svg>support@cuzgames.com</a>
     </div>
   </div>
 </section>
