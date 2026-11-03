@@ -40,6 +40,10 @@ h1, h2, h3 { margin: 0; line-height: 1.02; }
 @keyframes shine { 0%, 55% { left: -60%; } 85%, 100% { left: 130%; } }
 @keyframes nudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(4px); } }
 @media (prefers-reduced-motion: reduce) { .btn-play, .btn-play::after, .btn-play .ico, .hero .badge img, .deals-strip div { animation: none; } }
+.btn-tiktok { background: #111111; color: #FFFFFF; box-shadow: 0 5px 0 #000000, -2px 0 0 #25F4EE inset, 2px 0 0 #FE2C55 inset; }
+.btn-tiktok .ico { filter: drop-shadow(-1.5px -1px 0 #25F4EE) drop-shadow(1.5px 1px 0 #FE2C55); }
+.btn-insta { background: linear-gradient(45deg, #F9A23A, #E1306C 45%, #8A3AB9); color: #FFFFFF; box-shadow: 0 5px 0 #6A2A8E; }
+.btn-tiktok:hover, .btn-insta:hover { filter: brightness(1.1); }
 .btn-small { height: 44px; padding: 0 18px; font-size: 15px; border-radius: 12px; }
 
 /* Top bar */
@@ -141,29 +145,66 @@ h1, h2, h3 { margin: 0; line-height: 1.02; }
 .look-a .deal:nth-child(2) { transform: rotate(0.8deg); }
 .look-a .deal .sticker { background: var(--st); color: var(--stt); }
 .look-a .deal .price, .look-a .game .go { color: var(--ac); }
-/* Deal buttons: real buttons that lift and nudge their arrow, each in its deal's colour */
+/* Deals: three cards, three ideas. The sale is a price tag, the Discord copy is a gift, the free game is a live window into play. */
+.look-a .deal { overflow: visible; color: #FFF9EC; box-shadow: 6px 8px 0 rgba(31,42,68,0.18); isolation: isolate; }
+.look-a .deal h3 { font-size: 30px; color: #FFF9EC; }
+.look-a .deal p { color: rgba(255,249,236,0.9); }
 .look-a .deal p:last-of-type { margin-bottom: 26px; }
-.look-a .deal .go { position: relative; overflow: hidden; align-self: flex-start; display: inline-flex; align-items: center; gap: 9px; height: 52px; padding: 0 22px; border-radius: 14px; background: var(--ac); color: #FFF9EC; font: 800 16px/1 "Nunito", sans-serif; box-shadow: 0 5px 0 #B24333; transition: transform 0.15s, box-shadow 0.15s, filter 0.15s; }
+.look-a .deal .price { color: #FFF9EC; font-size: 64px; text-shadow: 0 4px 0 rgba(0,0,0,0.14); }
+.look-a .deal .price small { margin-left: 10px; font: 700 18px/1 "Fredoka", sans-serif; opacity: 0.8; text-shadow: none; }
+.look-a .deal .sticker { background: none; padding: 0; }
+.look-a .deal .go { position: relative; overflow: hidden; align-self: flex-start; display: inline-flex; align-items: center; gap: 9px; height: 54px; padding: 0 24px; border-radius: 14px; font: 800 16px/1 "Nunito", sans-serif; transition: transform 0.15s, box-shadow 0.15s; }
 .look-a .deal .go i { font-style: normal; transition: transform 0.2s; }
-.look-a .deal:hover .go { transform: translateY(-2px); box-shadow: 0 7px 0 #B24333; filter: brightness(1.08); }
+.look-a .deal:hover .go { transform: translateY(-2px); }
 .look-a .deal:hover .go i { transform: translateX(5px); }
-.look-a .deal.dc .go { background: var(--discord); box-shadow: 0 5px 0 #4149C4; }
-.look-a .deal.dc:hover .go { box-shadow: 0 7px 0 #4149C4; }
-/* The launch sale: the loud one, in brick red with gold */
-.look-a .deal.hot { background: repeating-conic-gradient(from 0deg at 100% 0%, rgba(255,249,236,0.07) 0 6deg, transparent 6deg 12deg), linear-gradient(160deg, #D85F49, #B54333); color: #FFF9EC; box-shadow: 0 0 0 3px #F2C14E, 8px 10px 0 rgba(31,42,68,0.22); transform: rotate(-1deg) scale(1.03); z-index: 1; }
-.look-a .deal.hot:hover { transform: rotate(-1.5deg) scale(1.05); }
-.look-a .deal.hot h3 { font-size: 34px; }
-.look-a .deal.hot .price { color: #F7C948; font-size: 64px; text-shadow: 0 4px 0 rgba(90,20,10,0.25); }
-.look-a .deal.hot .price s { color: #FFF9EC; opacity: 0.65; }
-.look-a .deal.hot p { color: rgba(255,249,236,0.92); }
-.look-a .deal.hot .ends { display: inline-flex; align-self: flex-start; margin-top: 14px; padding: 6px 12px; border-radius: 8px; background: rgba(31,42,68,0.35); color: #FFF9EC; font: 700 15px/1.2 "Fredoka", sans-serif; }
-.look-a .deal.hot .sticker { top: -24px; right: -10px; display: grid; place-items: center; width: 76px; height: 76px; padding: 0; border-radius: 50%; background: #F7C948; color: #1F2A44; font-size: 21px; box-shadow: 0 0 0 4px #FFF9EC, 0 8px 16px rgba(0,0,0,0.2); animation: wobble 2.6s ease-in-out infinite; }
-.look-a .deal.hot .go { background: #F7C948; color: #1F2A44; box-shadow: 0 5px 0 #C9962E; }
-.look-a .deal.hot:hover .go { box-shadow: 0 7px 0 #C9962E; }
-.look-a .deal.hot .go::after { content: ""; position: absolute; top: 0; bottom: 0; left: -60%; width: 40%; background: linear-gradient(100deg, transparent, rgba(255,255,255,0.7), transparent); transform: skewX(-20deg); animation: shine 3.2s ease-in-out infinite; }
-@media (max-width: 640px) { .look-a .deal.hot { transform: rotate(-1deg); } .look-a .deal.hot .sticker { right: 6px; } .look-a .deal.hot .price { font-size: 54px; } }
-@keyframes wobble { 0%, 100% { transform: rotate(8deg) scale(1); } 50% { transform: rotate(-4deg) scale(1.1); } }
-@media (prefers-reduced-motion: reduce) { .look-a .deal.hot .sticker, .look-a .deal.hot .go::after { animation: none; } }
+.look-a .deal .go::after { content: ""; position: absolute; top: 0; bottom: 0; left: -60%; width: 40%; background: linear-gradient(100deg, transparent, rgba(255,255,255,0.6), transparent); transform: skewX(-20deg); animation: shine 4s ease-in-out infinite; }
+.look-a .deal.dc .go::after { animation-delay: 1.3s; }
+.look-a .deal.pl .go::after { animation-delay: 2.6s; }
+
+/* 1. Launch sale: a red price tag with a punched hole, stitched edge and a spinning gold burst */
+.look-a .deal.hot { background: linear-gradient(155deg, #D9604A, #B3402F); }
+.look-a .deal.hot::before { content: ""; position: absolute; inset: 9px; z-index: -1; border: 2px dashed rgba(255,249,236,0.35); border-radius: 12px; }
+.look-a .deal.hot::after { content: ""; position: absolute; top: 18px; left: 18px; width: 18px; height: 18px; border-radius: 50%; background: var(--pg); box-shadow: inset 2px 2px 3px rgba(0,0,0,0.3); }
+.look-a .deal.hot h3 { margin-left: 26px; }
+.look-a .deal.hot .price s { position: relative; margin-left: 12px; font-size: 26px; color: #FFF9EC; opacity: 0.75; text-decoration: none; text-shadow: none; }
+.look-a .deal.hot .price s::after { content: ""; position: absolute; left: -4px; right: -4px; top: 50%; height: 4px; border-radius: 2px; background: #1F2A44; transform: rotate(-12deg); }
+.look-a .deal.hot .sticker { top: -30px; right: -18px; width: 104px; height: 104px; display: grid; place-items: center; text-align: center; color: #1F2A44; font: 700 28px/0.9 "Fredoka", sans-serif; }
+.look-a .deal.hot .sticker small { display: block; font-size: 14px; letter-spacing: 0.08em; }
+.look-a .deal.hot .sticker::before { content: ""; position: absolute; inset: 0; z-index: -1; background: #FFD23F; clip-path: polygon(50% 0, 59% 13%, 75% 7%, 77% 23%, 93% 25%, 87% 41%, 100% 50%, 87% 59%, 93% 75%, 77% 77%, 75% 93%, 59% 87%, 50% 100%, 41% 87%, 25% 93%, 23% 77%, 7% 75%, 13% 59%, 0 50%, 13% 41%, 7% 25%, 23% 23%, 25% 7%, 41% 13%); animation: spin 14s linear infinite; filter: drop-shadow(0 4px 0 rgba(0,0,0,0.15)); }
+.look-a .deal.hot .ends { display: inline-flex; align-self: flex-start; margin-top: 14px; padding: 7px 12px; border-radius: 8px; background: #1F2A44; color: #FFF9EC; font: 700 15px/1.2 "Fredoka", sans-serif; }
+.look-a .deal.hot .go { background: #FFF9EC; color: #B3402F; box-shadow: 0 5px 0 #7E2C20; }
+.look-a .deal.hot:hover .go { box-shadow: 0 7px 0 #7E2C20; }
+
+/* 2. Free copy on Discord: a purple gift box with confetti, tied with a ribbon, and a gift tag that swings */
+.look-a .deal.dc { background:
+  radial-gradient(circle at 12% 78%, rgba(255,210,63,0.5) 0 3px, transparent 4px), radial-gradient(circle at 30% 92%, rgba(255,249,236,0.45) 0 4px, transparent 5px), radial-gradient(circle at 52% 70%, rgba(255,120,150,0.5) 0 3px, transparent 4px), radial-gradient(circle at 70% 86%, rgba(255,249,236,0.4) 0 3px, transparent 4px), radial-gradient(circle at 88% 64%, rgba(255,210,63,0.45) 0 4px, transparent 5px),
+  linear-gradient(90deg, transparent calc(100% - 64px), rgba(255,249,236,0.16) calc(100% - 64px), rgba(255,249,236,0.16) calc(100% - 40px), transparent calc(100% - 40px)),
+  linear-gradient(155deg, #6B76F7, #4651D8); }
+.look-a .deal.dc .sticker { top: -22px; right: -6px; transform-origin: 50% 0; animation: swing 3s ease-in-out infinite; }
+.look-a .deal.dc .sticker::before { content: ""; position: absolute; top: 0; left: 50%; width: 2px; height: 22px; background: #FFF9EC; }
+.look-a .deal.dc .sticker b { position: relative; display: block; margin-top: 20px; padding: 12px 14px 12px 22px; background: #FFF9EC; color: #4651D8; font: 700 20px/1 "Fredoka", sans-serif; clip-path: polygon(14px 0, 100% 0, 100% 100%, 14px 100%, 0 50%); box-shadow: 0 4px 0 rgba(0,0,0,0.15); }
+.look-a .deal.dc .sticker b::before { content: ""; position: absolute; left: 12px; top: 50%; width: 7px; height: 7px; margin-top: -3.5px; border-radius: 50%; background: #4651D8; }
+.look-a .deal.dc h3 { padding-right: 70px; }
+.look-a .deal.dc .go { background: #FFFFFF; color: #4651D8; box-shadow: 0 5px 0 #2F37A6; }
+.look-a .deal.dc:hover .go { box-shadow: 0 7px 0 #2F37A6; }
+
+/* 3. Off the Couch, free: a navy window with the game playing behind it, and an "always free" stamp */
+.look-a .deal.pl { background: #1F2A44; overflow: hidden; }
+.look-a .deal.pl video { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; opacity: 0.55; }
+.look-a .deal.pl::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(31,42,68,0.55), rgba(31,42,68,0.92) 55%); }
+.look-a .deal.pl .sticker { top: 16px; right: 16px; width: 86px; height: 86px; display: grid; place-items: center; border-radius: 50%; background: #C94F3E; color: #FFF9EC; text-align: center; font: 700 14px/1 "Fredoka", sans-serif; letter-spacing: 0.06em; transform: rotate(-12deg); box-shadow: inset 0 0 0 4px #C94F3E, inset 0 0 0 6px rgba(255,249,236,0.8); animation: stamp 2.8s ease-in-out infinite; }
+.look-a .deal.pl .sticker b { display: block; font-size: 22px; letter-spacing: 0; }
+.look-a .deal.pl .live { display: inline-flex; align-items: center; gap: 8px; margin: 10px 0 0; font: 700 15px/1 "Fredoka", sans-serif; color: #9FE3B4; }
+.look-a .deal.pl .live::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: #5AD17F; animation: blink 1.4s ease-in-out infinite; }
+.look-a .deal.pl .go { background: #C94F3E; color: #FFF9EC; box-shadow: 0 5px 0 #8E3326; }
+.look-a .deal.pl:hover .go { box-shadow: 0 7px 0 #8E3326; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes swing { 0%, 100% { transform: rotate(6deg); } 50% { transform: rotate(-6deg); } }
+@keyframes stamp { 0%, 100% { transform: rotate(-12deg) scale(1); } 50% { transform: rotate(-8deg) scale(1.07); } }
+@keyframes blink { 50% { opacity: 0.3; } }
+@media (max-width: 640px) { .look-a .deal.hot .sticker { right: 4px; width: 90px; height: 90px; font-size: 24px; } .look-a .deal .price { font-size: 54px; } }
+@media (prefers-reduced-motion: reduce) { .look-a .deal .sticker, .look-a .deal .sticker::before, .look-a .deal .go::after, .look-a .deal.pl .live::before { animation: none; } }
 .look-a .tag, .look-a .free { background: var(--cd); color: var(--ctx); }
 .look-a .tag.soon { background: var(--st); color: var(--stt); }
 .look-a .game.next .pic { background: repeating-linear-gradient(-45deg, rgba(43,36,49,0.06) 0 14px, transparent 14px 28px), var(--nx); }
@@ -195,7 +236,7 @@ h1, h2, h3 { margin: 0; line-height: 1.02; }
 </style>
 </head>
 <body class="look-a">
-<svg width="0" height="0" style="position:absolute"><symbol id="discord" viewBox="0 0 24 24"><path fill="currentColor" d="M20.3 4.4A19.8 19.8 0 0 0 15.4 3l-.6 1.3a18.4 18.4 0 0 0-5.6 0L8.6 3a19.7 19.7 0 0 0-4.9 1.5C.6 9.1-.3 13.6.1 18.1a19.9 19.9 0 0 0 6 3l1.3-2.1a12.9 12.9 0 0 1-2-1l.5-.4a14.2 14.2 0 0 0 12.2 0l.5.4c-.6.4-1.3.7-2 1l1.3 2.1a19.8 19.8 0 0 0 6-3c.5-5.2-.8-9.7-3.6-13.7ZM8 15.3c-1.2 0-2.2-1.1-2.2-2.4S6.8 10.5 8 10.5s2.2 1.1 2.2 2.4-1 2.4-2.2 2.4Zm8 0c-1.2 0-2.2-1.1-2.2-2.4s1-2.4 2.2-2.4 2.2 1.1 2.2 2.4-1 2.4-2.2 2.4Z"/></symbol></svg>
+<svg width="0" height="0" style="position:absolute"><symbol id="discord" viewBox="0 0 24 24"><path fill="currentColor" d="M20.3 4.4A19.8 19.8 0 0 0 15.4 3l-.6 1.3a18.4 18.4 0 0 0-5.6 0L8.6 3a19.7 19.7 0 0 0-4.9 1.5C.6 9.1-.3 13.6.1 18.1a19.9 19.9 0 0 0 6 3l1.3-2.1a12.9 12.9 0 0 1-2-1l.5-.4a14.2 14.2 0 0 0 12.2 0l.5.4c-.6.4-1.3.7-2 1l1.3 2.1a19.8 19.8 0 0 0 6-3c.5-5.2-.8-9.7-3.6-13.7ZM8 15.3c-1.2 0-2.2-1.1-2.2-2.4S6.8 10.5 8 10.5s2.2 1.1 2.2 2.4-1 2.4-2.2 2.4Zm8 0c-1.2 0-2.2-1.1-2.2-2.4s1-2.4 2.2-2.4 2.2 1.1 2.2 2.4-1 2.4-2.2 2.4Z"/></symbol><symbol id="tiktok" viewBox="0 0 24 24"><path fill="currentColor" d="M12.5.02c1.3-.02 2.6-.01 3.9-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></symbol><symbol id="instagram" viewBox="0 0 24 24"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="12" cy="12" r="4.3" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="17.6" cy="6.4" r="1.4" fill="currentColor"/></symbol></svg>
 
 <header class="top">
   <div class="wrap">
@@ -214,6 +255,8 @@ h1, h2, h3 { margin: 0; line-height: 1.02; }
       <div class="ctas">
         <a class="btn btn-red btn-play" href="https://offthecouch.cuzgames.com/play/?from=cuzgames"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4l13 8-13 8z" fill="currentColor"/></svg>Play Off the Couch free</a>
         <a class="btn btn-discord" href="https://discord.gg/fHxH9XVwNA"><svg class="ico"><use href="#discord"/></svg>Join our Discord</a>
+        <a class="btn btn-tiktok" href="https://www.tiktok.com/@cuzgames0" target="_blank" rel="noopener"><svg class="ico"><use href="#tiktok"/></svg>Follow on TikTok</a>
+        <a class="btn btn-insta" href="https://www.instagram.com/cuzgames/" target="_blank" rel="noopener"><svg class="ico"><use href="#instagram"/></svg>Follow on Instagram</a>
       </div>
     </div>
     <div class="badge"><img src="img/logo.webp" alt="Cuz Games logo: two kids jumping for a high five"></div>
@@ -229,7 +272,7 @@ h1, h2, h3 { margin: 0; line-height: 1.02; }
   <div class="head"><h2>Deals right now</h2><p>Grab them while they last.</p></div>
   <div class="deals">
     <a class="deal card hot" data-launch href="https://offthecouch.cuzgames.com/play/?unlock&from=cuzgames">
-      <span class="sticker">-50%</span>
+      <span class="sticker">-50%<small>OFF</small></span>
       <h3>Launch sale</h3>
       <p class="price">$3.99<s>$7.99</s></p>
       <p>Every Off the Couch game, plus every game we add later. One payment, no subscription.</p>
@@ -237,17 +280,19 @@ h1, h2, h3 { margin: 0; line-height: 1.02; }
       <span class="go">Unlock all games <i>→</i></span>
     </a>
     <a class="deal card dc" href="https://discord.gg/fHxH9XVwNA">
-      <span class="sticker">Free</span>
-      <h3>Free copy on Discord</h3>
-      <p class="price">$0</p>
-      <p>Join our Discord, press “Get my free copy”, and you get your own code for the full game. While copies last.</p>
+      <span class="sticker"><b>FREE</b></span>
+      <h3>A free copy for you</h3>
+      <p class="price">$0<small>the full game</small></p>
+      <p>Join our Discord, press “Get my free copy”, and you get your own code. While copies last.</p>
       <span class="go"><svg class="ico"><use href="#discord"/></svg>Get my free copy <i>→</i></span>
     </a>
     <a class="deal card pl" href="https://offthecouch.cuzgames.com/play/?from=cuzgames">
-      <span class="sticker">Always</span>
+      <video src="https://offthecouch.cuzgames.com/video/play/fruit-slicer.mp4" poster="https://offthecouch.cuzgames.com/video/play/fruit-slicer.jpg" autoplay muted loop playsinline aria-hidden="true"></video>
+      <span class="sticker"><span>ALWAYS<b>FREE</b></span></span>
       <h3>Off the Couch</h3>
       <p class="price">Free</p>
-      <p>Start playing right in your browser, with your body and your camera. No sign-in, no download.</p>
+      <p class="live">Playing in your browser right now</p>
+      <p>Your body is the controller. No sign-in, no download.</p>
       <span class="go"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4l13 8-13 8z" fill="currentColor"/></svg>Play free now <i>→</i></span>
     </a>
   </div>
@@ -283,6 +328,8 @@ h1, h2, h3 { margin: 0; line-height: 1.02; }
       <p>Free copies, first looks at new games, and a place to show off your best moves. Tell us what to make next — we read everything.</p>
       <div class="follow">
         <a class="btn btn-discord" href="https://discord.gg/fHxH9XVwNA"><svg class="ico"><use href="#discord"/></svg>Join our Discord</a>
+        <a class="btn btn-tiktok" href="https://www.tiktok.com/@cuzgames0" target="_blank" rel="noopener"><svg class="ico"><use href="#tiktok"/></svg>Follow on TikTok</a>
+        <a class="btn btn-insta" href="https://www.instagram.com/cuzgames/" target="_blank" rel="noopener"><svg class="ico"><use href="#instagram"/></svg>Follow on Instagram</a>
       </div>
     </div>
     <ul class="rooms">
@@ -299,7 +346,7 @@ h1, h2, h3 { margin: 0; line-height: 1.02; }
     <div class="card">
       <h2>Small studio. Big ideas.</h2>
       <p>Cuz Games is an independent studio. We make original games that are easy to pick up and hard to put down — the kind you play together, laughing.</p>
-      <p>Follow along: <a href="https://www.tiktok.com/@cuzgames0">TikTok</a> · <a href="https://www.instagram.com/cuzgames/">Instagram</a> · <a href="https://discord.gg/fHxH9XVwNA">Discord</a></p>
+      <div class="follow"><a class="btn btn-tiktok btn-small" href="https://www.tiktok.com/@cuzgames0" target="_blank" rel="noopener"><svg class="ico"><use href="#tiktok"/></svg>TikTok</a><a class="btn btn-insta btn-small" href="https://www.instagram.com/cuzgames/" target="_blank" rel="noopener"><svg class="ico"><use href="#instagram"/></svg>Instagram</a><a class="btn btn-discord btn-small" href="https://discord.gg/fHxH9XVwNA"><svg class="ico"><use href="#discord"/></svg>Discord</a></div>
     </div>
     <div class="card say" id="contact">
       <h2>Say hello.</h2>
