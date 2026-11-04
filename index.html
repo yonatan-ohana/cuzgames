@@ -264,21 +264,13 @@ h1, h2, h3 { margin: 0; line-height: 1.02; }
 </section>
 
 <div class="deals-strip" aria-hidden="true"><div>
-  <span data-launch>Launch sale: all Off the Couch games $3.99</span><span>Free copies on our Discord</span><span>Play Off the Couch free</span><span>Rubbed Out coming soon to Steam</span>
-  <span data-launch>Launch sale: all Off the Couch games $3.99</span><span>Free copies on our Discord</span><span>Play Off the Couch free</span><span>Rubbed Out coming soon to Steam</span>
+  <span>Free copies on our Discord</span><span>Play Off the Couch free</span><span>Rubbed Out coming soon to Steam</span>
+  <span>Free copies on our Discord</span><span>Play Off the Couch free</span><span>Rubbed Out coming soon to Steam</span>
 </div></div>
 
 <section class="wrap block" id="deals">
   <div class="head"><h2>Deals right now</h2><p>Grab them while they last.</p></div>
   <div class="deals">
-    <a class="deal card hot" data-launch href="https://offthecouch.cuzgames.com/play/?unlock&from=cuzgames">
-      <span class="sticker">-50%<small>OFF</small></span>
-      <h3>Launch sale</h3>
-      <p class="price">$3.99<s>$7.99</s></p>
-      <p>Every Off the Couch game, plus every game we add later. One payment, no subscription.</p>
-      <p class="ends" data-left>Ends 15 November</p>
-      <span class="go">Unlock all games <i>→</i></span>
-    </a>
     <a class="deal card dc" href="https://discord.gg/fHxH9XVwNA">
       <span class="sticker"><b>FREE</b></span>
       <h3>A free copy for you</h3>
@@ -387,10 +379,6 @@ document.querySelectorAll('.mini').forEach(m => {
   m.addEventListener('mouseenter', () => v.play().catch(() => {}));
   m.addEventListener('mouseleave', () => v.pause());
 });
-// The launch sale ends by itself at the end of 15 November (same moment as the game site).
-const ends = Date.parse('2026-11-16T08:00:00Z'), left = Math.ceil((ends - Date.now()) / 864e5);
-if (left <= 0) document.querySelectorAll('[data-launch]').forEach(e => e.remove());
-else document.querySelectorAll('[data-left]').forEach(e => e.textContent = left === 1 ? '⏰ Last day!' : `⏰ Only ${left} days left · ends 15 November`);
 </script>
 </body>
 </html>
